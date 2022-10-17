@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<extendedFeatureModel>
+	<properties>
+		<graphics key="autolayoutconstraints" value="false"/>
+		<graphics key="legendautolayout" value="true"/>
+		<graphics key="showconstraints" value="true"/>
+		<graphics key="showshortnames" value="false"/>
+		<graphics key="layout" value="vertical"/>
+		<graphics key="showcollapsedconstraints" value="true"/>
+		<graphics key="legendhidden" value="false"/>
+		<graphics key="layoutalgorithm" value="4"/>
+	</properties>
+	<struct>
+		<and abstract="true" mandatory="true" name="Promotional Loan">
+			<alt mandatory="true" name="Product">
+				<alt name="P001">
+					<graphics key="collapsed" value="false"/>
+					<feature name="P001_10_03_10"/>
+					<feature name="P001_10_05_10"/>
+				</alt>
+				<alt name="P002">
+					<feature name="P002_10_10_10"/>
+					<feature name="P002_20_20_20"/>
+				</alt>
+				<alt name="P003">
+					<feature name="P003_05_03_05"/>
+					<feature name="P003_07_05_07"/>
+					<feature name="P003_10_05_10"/>
+				</alt>
+			</alt>
+			<alt mandatory="true" name="Applicant">
+				<graphics key="collapsed" value="true"/>
+				<feature name="Private person"/>
+				<feature name="Public law institution"/>
+				<feature name="Company"/>
+			</alt>
+			<alt mandatory="true" name="Maximum credit amount">
+				<graphics key="collapsed" value="true"/>
+				<feature name="A_25K"/>
+				<feature name="A_50K"/>
+				<feature name="A_250K"/>
+				<feature name="A_1M"/>
+			</alt>
+			<alt mandatory="true" name="Loan term">
+				<graphics key="collapsed" value="true"/>
+				<feature name="T_05"/>
+				<feature name="T_07"/>
+				<feature name="T_10"/>
+				<feature name="T_20"/>
+			</alt>
+			<alt mandatory="true" name="Grace period">
+				<graphics key="collapsed" value="true"/>
+				<feature name="F_03"/>
+				<feature name="F_05"/>
+				<feature name="F_10"/>
+				<feature name="F_20"/>
+			</alt>
+			<alt mandatory="true" name="Fixed interest rate">
+				<graphics key="collapsed" value="true"/>
+				<feature name="FX_05"/>
+				<feature name="FX_07"/>
+				<feature name="FX_10"/>
+				<feature name="FX_20"/>
+			</alt>
+		</and>
+	</struct>
+	<constraints>
+		<rule>
+			<imp>
+				<var>P001_10_03_10</var>
+				<conj>
+					<var>T_10</var>
+					<conj>
+						<var>F_03</var>
+						<var>FX_10</var>
+					</conj>
+				</conj>
+			</imp>
+		</rule>
+		<rule>
+			<imp>
+				<var>P001_10_05_10</var>
+				<conj>
+					<var>T_10</var>
+					<conj>
+						<var>F_05</var>
+						<var>FX_10</var>
+					</conj>
+				</conj>
+			</imp>
+		</rule>
+		<rule>
+			<imp>
+				<var>P002_10_10_10</var>
+				<conj>
+					<var>T_10</var>
+					<conj>
+						<var>F_10</var>
+						<var>FX_10</var>
+					</conj>
+				</conj>
+			</imp>
+		</rule>
+		<rule>
+			<imp>
+				<var>P002_20_20_20</var>
+				<conj>
+					<var>T_20</var>
+					<conj>
+						<var>F_20</var>
+						<var>FX_20</var>
+					</conj>
+				</conj>
+			</imp>
+		</rule>
+		<rule>
+			<imp>
+				<var>P003_05_03_05</var>
+				<conj>
+					<var>T_05</var>
+					<conj>
+						<var>F_03</var>
+						<var>FX_05</var>
+					</conj>
+				</conj>
+			</imp>
+		</rule>
+		<rule>
+			<imp>
+				<var>P003_07_05_07</var>
+				<conj>
+					<var>T_07</var>
+					<conj>
+						<var>F_05</var>
+						<var>FX_07</var>
+					</conj>
+				</conj>
+			</imp>
+		</rule>
+		<rule>
+			<imp>
+				<var>P003_10_05_10</var>
+				<conj>
+					<var>T_10</var>
+					<conj>
+						<var>F_05</var>
+						<var>FX_10</var>
+					</conj>
+				</conj>
+			</imp>
+		</rule>
+		<rule>
+			<imp>
+				<var>P001</var>
+				<conj>
+					<disj>
+						<var>Private person</var>
+						<var>Company</var>
+					</disj>
+					<disj>
+						<var>A_25K</var>
+						<disj>
+							<var>A_50K</var>
+							<var>A_250K</var>
+						</disj>
+					</disj>
+				</conj>
+			</imp>
+		</rule>
+		<rule>
+			<imp>
+				<var>P002</var>
+				<conj>
+					<var>Private person</var>
+					<disj>
+						<var>A_25K</var>
+						<var>A_50K</var>
+					</disj>
+				</conj>
+			</imp>
+		</rule>
+		<rule>
+			<imp>
+				<var>P003</var>
+				<conj>
+					<disj>
+						<var>Public law institution</var>
+						<var>Company</var>
+					</disj>
+					<disj>
+						<var>A_50K</var>
+						<disj>
+							<var>A_250K</var>
+							<var>A_1M</var>
+						</disj>
+					</disj>
+				</conj>
+			</imp>
+		</rule>
+	</constraints>
+</extendedFeatureModel>
