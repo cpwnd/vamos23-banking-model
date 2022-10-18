@@ -13,16 +13,20 @@
 	<struct>
 		<and abstract="true" mandatory="true" name="Promotional Loan">
 			<alt mandatory="true" name="Product">
+				<attribute name="mbtextbelow" type="string" unit="" value="This is a product information sheet for promotional product generated from a feature model.\n\n"/>
 				<alt name="P001">
 					<graphics key="collapsed" value="false"/>
+					<attribute name="mbtext" type="string" unit="" value="% Product 001\n\n"/>
 					<feature name="P001_10_03_10"/>
 					<feature name="P001_10_05_10"/>
 				</alt>
 				<alt name="P002">
+					<attribute name="mbtext" type="string" unit="" value="% Product 002\n\n"/>
 					<feature name="P002_10_10_10"/>
 					<feature name="P002_20_20_20"/>
 				</alt>
 				<alt name="P003">
+					<attribute name="mbtext" type="string" unit="" value="% Product 003\n\n"/>
 					<feature name="P003_05_03_05"/>
 					<feature name="P003_07_05_07"/>
 					<feature name="P003_10_05_10"/>
@@ -30,38 +34,89 @@
 			</alt>
 			<alt mandatory="true" name="Applicant">
 				<graphics key="collapsed" value="true"/>
-				<feature name="Private person"/>
-				<feature name="Public law institution"/>
-				<feature name="Company"/>
+				<attribute name="mbtext" type="string" unit="" value="List of allowed applicants:\n\n"/>
+				<attribute name="mbmeta" type="string" unit="" value="A"/>
+				<feature name="Private person">
+					<attribute name="mbtext" type="string" unit="" value="  * Private person\n"/>
+				</feature>
+				<feature name="Public law institution">
+					<attribute name="mbtext" type="string" unit="" value="  * Corporation or institution operating in the public sector\n"/>
+				</feature>
+				<feature name="Company">
+					<attribute name="mbtext" type="string" unit="" value="  * Any commercial business\n"/>
+				</feature>
 			</alt>
 			<alt mandatory="true" name="Maximum credit amount">
 				<graphics key="collapsed" value="true"/>
-				<feature name="A_25K"/>
-				<feature name="A_50K"/>
-				<feature name="A_250K"/>
-				<feature name="A_1M"/>
+				<attribute name="mbmeta" type="string" unit="" value="B"/>
+				<attribute name="mbtext" type="string" unit="" value="\nMaximum credit amount is "/>
+				<feature name="A_25K">
+					<attribute name="mbtext_max" type="string" unit="" value="until 25,000 €.\n"/>
+				</feature>
+				<feature name="A_50K">
+					<attribute name="mbtext_min" type="string" unit="" value="from 50,000 € "/>
+					<attribute name="mbtext_max" type="string" unit="" value="until 50,000 €.\n"/>
+				</feature>
+				<feature name="A_250K">
+					<attribute name="mbtext_min" type="string" unit="" value="from 250,000 € "/>
+					<attribute name="mbtext_max" type="string" unit="" value="until 250,000 €.\n"/>
+				</feature>
+				<feature name="A_1M">
+					<attribute name="mbtext_max" type="string" unit="" value="until 1,000,000 €.\n"/>
+				</feature>
 			</alt>
-			<alt mandatory="true" name="Loan term">
-				<graphics key="collapsed" value="true"/>
-				<feature name="T_05"/>
-				<feature name="T_07"/>
-				<feature name="T_10"/>
-				<feature name="T_20"/>
-			</alt>
-			<alt mandatory="true" name="Grace period">
-				<graphics key="collapsed" value="true"/>
-				<feature name="F_03"/>
-				<feature name="F_05"/>
-				<feature name="F_10"/>
-				<feature name="F_20"/>
-			</alt>
-			<alt mandatory="true" name="Fixed interest rate">
-				<graphics key="collapsed" value="true"/>
-				<feature name="FX_05"/>
-				<feature name="FX_07"/>
-				<feature name="FX_10"/>
-				<feature name="FX_20"/>
-			</alt>
+			<and mandatory="true" name="Term-Period-Combinations">
+				<attribute name="mbtext" type="string" unit="" value="\nPossible loan term combinations are:\n\n"/>
+				<alt mandatory="true" name="Loan term">
+					<graphics key="collapsed" value="false"/>
+					<attribute name="mbmeta" type="string" unit="" value="C_TP"/>
+					
+					<feature name="T_05">
+						<attribute name="mbtext" type="string" unit="" value="  * 5 years loan term "/>
+					</feature>
+					<feature name="T_07">
+						<attribute name="mbtext" type="string" unit="" value="  * 7 years loan term "/>
+					</feature>
+					<feature name="T_10">
+						<attribute name="mbtext" type="string" unit="" value="  * 10 years loan term "/>
+					</feature>
+					<feature name="T_20">
+						<attribute name="mbtext" type="string" unit="" value="  * 20 years loan term "/>
+					</feature>
+				</alt>
+				<alt mandatory="true" name="Grace period">
+					<graphics key="collapsed" value="false"/>
+					<attribute name="mbmeta" type="string" unit="" value="C_TP"/>
+					<feature name="F_03">
+						<attribute name="mbtext" type="string" unit="" value="with a grace period of 3 years "/>
+					</feature>
+					<feature name="F_05">
+						<attribute name="mbtext" type="string" unit="" value="with a grace period of 5 years "/>
+					</feature>
+					<feature name="F_10">
+						<attribute name="mbtext" type="string" unit="" value="with a grace period of 10 years "/>
+					</feature>
+					<feature name="F_20">
+						<attribute name="mbtext" type="string" unit="" value="with a grace period of 20 years "/>
+					</feature>
+				</alt>
+				<alt mandatory="true" name="Interest rate period">
+					<graphics key="collapsed" value="false"/>
+					<attribute name="mbmeta" type="string" unit="" value="C_TP"/>
+					<feature name="FX_05">
+						<attribute name="mbtext" type="string" unit="" value="and interest rate period of 5 years.\n"/>
+					</feature>
+					<feature name="FX_07">
+						<attribute name="mbtext" type="string" unit="" value="and interest rate period of 7 years.\n"/>
+					</feature>
+					<feature name="FX_10">
+						<attribute name="mbtext" type="string" unit="" value="and interest rate period of 10 years.\n"/>
+					</feature>
+					<feature name="FX_20">
+						<attribute name="mbtext" type="string" unit="" value="and interest rate period of 20 years.\n"/>
+					</feature>
+				</alt>
+			</and>
 		</and>
 	</struct>
 	<constraints>
